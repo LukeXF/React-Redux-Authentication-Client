@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { AUTH_USER } from './types';
+import {
+    AUTH_USER,
+    AUTH_ERROR
+} from './types';
 
 const API_URL = 'http://localhost:3090';
 
@@ -23,7 +26,15 @@ export function signinUser({ email, password }) {
         .catch(() => {
             // If request bad
             // - Show an error to user
+            dispatch(authError('Error! Please check your email and password.'));
         })
     }
 
+}
+
+export function authError(error) {
+    return {
+        type: AUTH_ERROR,
+        payload: error
+    }
 }
