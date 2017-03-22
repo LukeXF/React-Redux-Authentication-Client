@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 
 class Signup extends Component {
 
-    handleFormSubmit({email, password}) {
-        console.log(email, password);
+    handleFormSubmit(formProps) {
+        console.log(formProps);
         // TODO code to sign up user
+        this.props.signupUser(formProps);
     }
 
     renderError() {
@@ -78,10 +79,14 @@ function validate(formProps) {
     return errors;
 }
 
+function mapStateToProps(state) {
+    return { errorMessage: state.auth.error };
+}
+
 Signup = reduxForm({
     form: 'signup',
     fields: ['email', 'password', 'passwordConfirm'],
     validate
 })(Signup);
 
-export default Signup = connect(null, actions)(Signup);
+export default Signup = connect(mapStateToProps, actions)(Signup);
