@@ -38,7 +38,7 @@ class Signin extends Component {
 
                     {this.renderError()}
 
-                    <button action="submit" className="btn btn-primary">Sign In</button>
+                    <button action="submit" className="btn btn-primary btn-block">Sign In</button>
 
                 </form>
             </div>
