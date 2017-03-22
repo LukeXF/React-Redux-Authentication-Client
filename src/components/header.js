@@ -8,9 +8,14 @@ class Header extends Component {
     renderLinks() {
 
         if(this.props.authenticated == true) {
-            return <li className="nav-item">
+            return [
+                    <li className="nav-item" key={1}>
+                        <Link to="/feature" className="nav-link">Featured Section</Link>
+                    </li>,
+                    <li className="nav-item" key={2}>
                         <Link to="/signout" className="nav-link">Sign Out</Link>
                     </li>
+                ];
         } else {
             return [
                     <li className="nav-item" key={1}>
@@ -26,7 +31,7 @@ class Header extends Component {
     render() {
         return(
             <nav className="navbar navbar-light">
-                <Link to="/" className="navbar-brand">Redux Authentication</Link>
+                <Link to="/" className="navbar-brand">React / Redux Authentication Client</Link>
                 <ul className="nav navbar-nav navbar-right">
                     {this.renderLinks()}
                 </ul>
